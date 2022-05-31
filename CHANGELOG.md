@@ -1,3 +1,7 @@
+## 1.1.1
+
+* Upgraded to use latest dependencies
+
 ## 1.1.0
 
 * Upgraded to use latest dependencies

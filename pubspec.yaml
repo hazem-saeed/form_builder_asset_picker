@@ -1,6 +1,6 @@
 name: form_builder_asset_picker
 description: File picker Field for flutter_form_builder package. Used to select files as part of form input.
-version: 1.1.0
+version: 1.1.1
 homepage: https://github.com/hazem-saeed/form_builder_asset_picker
 
 environment:
@@ -10,9 +10,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  file_picker: ^4.3.1
-  flutter_form_builder: ^7.0.0
-  form_builder_validators: ^7.2.0
+  file_picker: ^4.6.0
+  flutter_form_builder: ^7.2.1
+  form_builder_validators: ^8.1.1
 
 dev_dependencies:
   flutter_test:
