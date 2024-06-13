@@ -73,13 +73,13 @@ class FormBuilderAssetPicker extends FormBuilderField<List<PlatformFile>> {
             onSaved: onSaved,
             enabled: enabled,
             onReset: onReset,
-            decoration: decoration,
+            // decoration: decoration,
             focusNode: focusNode,
             builder: (FormFieldState<List<PlatformFile>?> field) {
-              final state = field as _FormBuilderAssetPickerState;
+              final state = field as FormBuilderAssetPickerState;
 
               return InputDecorator(
-                  decoration: state.decoration,
+                  decoration: decoration,
 
                   /// To place the 'button' at the beginning, and to size it
                   child: Column(children: [
@@ -90,8 +90,8 @@ class FormBuilderAssetPicker extends FormBuilderField<List<PlatformFile>> {
                             Text('${state._files!.length} / $maxFiles'),
                           InkWell(
                               onTap: state.enabled &&
-                                      (null == state._remainingItemCount ||
-                                          state._remainingItemCount! > 0)
+                                      (null == state.remainingItemCount ||
+                                          state.remainingItemCount! > 0)
                                   ? () => state.pickFiles(field)
                                   : null,
                               child: selector)
@@ -104,14 +104,14 @@ class FormBuilderAssetPicker extends FormBuilderField<List<PlatformFile>> {
             });
 
   @override
-  _FormBuilderAssetPickerState createState() => _FormBuilderAssetPickerState();
+  FormBuilderAssetPickerState createState() => FormBuilderAssetPickerState();
 }
 
-class _FormBuilderAssetPickerState
+class FormBuilderAssetPickerState
     extends FormBuilderFieldState<FormBuilderAssetPicker, List<PlatformFile>> {
   List<PlatformFile>? _files;
 
-  int? get _remainingItemCount =>
+  int? get remainingItemCount =>
       widget.maxFiles == null ? null : widget.maxFiles! - _files!.length;
 
   @override
@@ -164,7 +164,8 @@ class _FormBuilderAssetPickerState
         children: List.generate(files!.length, (index) {
           return Row(children: [
             Text(files[index].name,
-                style: Theme.of(context).textTheme.caption,
+                // style: Theme.of(context).textTheme.caption,
+                style: Theme.of(context).textTheme.bodyMedium,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis),
             if (enabled)
