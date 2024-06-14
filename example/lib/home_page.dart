@@ -4,16 +4,16 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_asset_picker/form_builder_asset_picker.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
   @override
-  _HomePageState createState() => _HomePageState();
+  HomePageState createState() => HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class HomePageState extends State<HomePage> {
   late ScrollController _scrollController;
   final GlobalKey<FormBuilderState> _formKey = GlobalKey<FormBuilderState>();
 
-  final List<String>? _allowedExtensions = ['pdf'];
+  final List<String> _allowedExtensions = ['pdf'];
 
   @override
   void initState() {
@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
                     maxFiles: 5,
                     type: FileType.custom,
                     decoration: const InputDecoration(border: InputBorder.none),
-                    selector: Row(children: const [
+                    selector: const Row(children: [
                       Icon(Icons.file_upload),
                       Text('Upload')
                     ]),
@@ -50,17 +50,18 @@ class _HomePageState extends State<HomePage> {
                         return 'Field required';
                       }
 
-                      bool _checkExt = val.every((element) {
-                        if (!_allowedExtensions!.contains(element.extension)) {
+                      bool checkExt = val.every((element) {
+                        if (!_allowedExtensions.contains(element.extension)) {
                           return false;
                         } else {
                           return true;
                         }
                       });
 
-                      if (_checkExt == false) {
+                      if (checkExt == false) {
                         return 'File extension not allowed';
                       }
+                      return null;
                     })
               ])),
           ButtonBar(alignment: MainAxisAlignment.center, children: [
